@@ -12,6 +12,7 @@
 
 <textarea id="commentText" rows="4" cols="50"></textarea><br>
 <button onclick="addComment()">등록</button>
+<button onclick="goBack()">돌아가기</button>
 
 <div id="commentBoard"></div>
 
@@ -34,6 +35,10 @@
     commentDiv.appendChild(deleteDiv);
     commentDiv.appendChild(textDiv);
     commentBoard.appendChild(commentDiv);
+  }
+
+  function goBack() {
+    window.history.back();
   }
 </script>
 
