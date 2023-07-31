@@ -1,1 +1,45 @@
+<script>
+    let posts = [];
 
+    function addPost() {
+        let nickname = document.getElementById("nickname").value;
+        let text = document.getElementById("post-content").value;
+        
+        if (!nickname && !text) {
+            alert("모든 칸이 비어있습니다 입력해주세요!");
+            return;
+        } else if (!nickname) {
+            alert("닉네임을 입력해주세요");
+            return;
+        } else if (!text) {
+            alert("게시글 내용을 입력해주세요");
+            return;
+        }
+
+        let post = {
+            nickname: nickname,
+            text: text
+        };
+        posts.push(post);
+        document.getElementById("nickname").value = '';
+        document.getElementById("post-content").value = '';
+        renderPosts();
+    }
+
+    function renderPosts() {
+        let postContainer = document.getElementById("post-list");
+        postContainer.innerHTML = '';
+        for (let post of posts) {
+            let postElement = document.createElement("li");
+            let nicknameElement = document.createElement("strong");
+            nicknameElement.innerText = post.nickname;
+            postElement.appendChild(nicknameElement);
+            
+            let textElement = document.createElement("p");
+            textElement.innerText = post.text;
+            postElement.appendChild(textElement);
+
+            postContainer.appendChild(postElement);
+        }
+    }
+</script>
