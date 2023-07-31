@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
 
+<h1>회사 평점 조회</h1>
+
+<div>
+  <label for="post">게시물:</label><br>
+  <textarea id="post" name="post" rows="4" cols="50"></textarea>
+</div>
+
+<button onclick="addPost()">게시물 등록</button>
+
+<div id="posts"></div>
+
+<script>
+let posts = [];
+
+function addPost() {
+  let post = document.getElementById("post").value;
+  
+  if (post) {
+    let postObj = {post: post, ratings: [], avgRating: 0};
+    posts.push(postObj);
+    displayPosts();
+    document.getElementById("post").value = '';
+  }
+}
+
+function displayPosts() {
+  let postsDiv = document.getElementById("posts");
+  postsDiv.innerHTML = '';
+
+  for(let i = 0; i < posts.length; i++) {
+    let postElement = document.createElement('div');
+    postElement.innerHTML = '<p>' + posts[i].post + ' (평균 평점: ' + posts[i].avgRating.toFixed(2) + ')</p>' +
+    '<input type="number" min="1" max="5" id="rating' + i + '">' +
+    '<button onclick="addRating(' + i + ')">평점 추가</button>';
+    postsDiv.appendChild(postElement);
+  }
+}
+
+function addRating(index) {
+  let rating = document.getElementById("rating" + index).value;
+  
+  if (rating) {
+    posts[index].ratings.push(parseFloat(rating));
+    
+    let total = 0;
+    for(let i = 0; i < posts[index].ratings.length; i++) {
+        total += posts[index].ratings[i];
+    }
+    posts[index].avgRating = total / posts[index].ratings.length;
+    
+    displayPosts();  // Update the posts
+  }
+}
+</script>
+
+</body>
+</html>
