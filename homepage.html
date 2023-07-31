@@ -1,30 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>간단한 게시판</title>
-  <style>
-    .container {
-      width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-    }
-    /* ... 기타 스타일 ... */
-  </style>
-  <script>
-    /* ... JavaScript 코드 ... */
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주제일고</title>
+    <style>
+
+        @font-face {
+            font-family: 'HakgyoansimWoojuR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .container1 button {
+            background-color: #07629e;
+            color: white;
+            padding: 50px 50px;
+            margin: 8px 0;
+            border: 3px solid rgb(100, 157, 231);
+            cursor: pointer;
+            width: 100%;
+            align-self: center;
+            align-items: center;
+            border-radius: 10px;
+            text-decoration:black;
+            font-family: 'HakgyoansimWoojuR';
+        }
+
+
+
+        .container h1{
+            align-self: center;
+
+        }
+        .container {
+            width: 100%;
+            
+            border: 2px skyblue;
+        }
+        .container1 {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border: none;
+            font-family: 'HakgyoansimWoojuR';
+            font-size: 20px;
+        }
+
+      
+        .container footer {
+            background-color: rgb(208, 245, 245);
+            align-self: center;
+            text-align: center;
+            color: #07629e;
+            width: 100%;
+            opacity: 0.5;
+        }
+
+        .container1 table {
+            align-items: stretch;
+        }
+   
+    </style>
 </head>
-<body>
-  <div class="container">
-    <h2>간단한 게시판</h2>
-    <button type="button">게시판</button> <!-- '게시판' 버튼 추가 -->
-    <textarea id="post-content" placeholder="게시글 내용을 입력하세요."></textarea>
-    <br>
-    <button type="button" onclick="addPost()">게시글 작성</button>
-    <ul id="post-list"></ul>
-  </div>
+
+<body link="#00ffd0" vlink="#00a6ff" alink="#00517d">
+    
+
+    <div class="container1" style="align-self: center;">
+        <table class="container1 table">
+            <tr>
+
+                <td rowspan="2" align="center"><h1><a href="Index.html"><img src="title.png"
+                alt="title.png" title="title.png" width="70% "></a></h1></td>
+                <td colspan="3"> </td>
+                <td align="right"><button  style="background-color: #ffffff; color:#07629e ;" class="container button1"    type="button" onClick="location.href = 'login.html'" ><h2>로그인</h2></button></td>
+
+            </tr>
+
+
+
+
+            <tr>
+                
+                <td><button class="container button"    type="button" onClick="location.href = '1.html'" ><h2>소 개</h2></button></td>
+                <td><button class="container button"    type="button" onClick="location.href = '2.html'" ><h2>구 인</h2></button></td>
+                <td><button class="container button"    type="button" onClick="location.href = '3.html'" ><h2>구 직</h2></button></td>
+                <td><button class="container button"    type="button" onClick="location.href = '4.html'" ><h2>제 작</h2></button></td>
+            
+                
+            </tr>
+
+            <tr>
+                <div class="container footer" style="opacity: 0.5; align-self: center;">
+                    <footer>
+                        <h2>CONTACT</h2>
+                        <h5>| sangyun031@gmail.com |</h5>
+                    </footer>
+                </div>
+            </tr>
+
+            <tr>
+                <h1>1번</h1>
+            </tr>
+    
+        </table>
+    </div>
+   
+
+    
+
+
+
+    
 </body>
 </html>
-
-
