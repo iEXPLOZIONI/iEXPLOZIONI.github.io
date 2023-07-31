@@ -1,28 +1,86 @@
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>간단한 게시판</title>
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+   
+    .container h2 {
+      text-align: center;
+    }
+   
+    .container input,
+    .container textarea {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+   
+    .container button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+   
+    .container button:hover {
+      opacity: 0.8;
+    }
+   
+    .container ul {
+      list-style-type: none;
+      padding: 0;
+    }
+   
+    .container li {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .container .delete-button {
+      background-color: #f44336;
+      color: white;
+      padding: 4px 8px;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .container .back-button {
+      background-color: #555;
+    }
+  </style>
+  <script>
     let posts = [];
 
     function addPost() {
         let nickname = document.getElementById("nickname").value;
         let text = document.getElementById("post-content").value;
-        
-        if (!nickname && !text) {
-            alert("모든 칸이 비어있습니다 입력해주세요!");
-            return;
-        } else if (!nickname) {
-            alert("닉네임을 입력해주세요");
-            return;
-        } else if (!text) {
-            alert("게시글 내용을 입력해주세요");
-            return;
-        }
-
         let post = {
+            id: Date.now(),
             nickname: nickname,
             text: text
         };
         posts.push(post);
         document.getElementById("nickname").value = '';
         document.getElementById("post-content").value = '';
+        renderPosts();
+    }
+
+    function deletePost(id) {
+        posts = posts.filter(post => post.id !== Number(id));
         renderPosts();
     }
 
@@ -39,7 +97,32 @@
             textElement.innerText = post.text;
             postElement.appendChild(textElement);
 
+            let deleteButton = document.createElement("button");
+            deleteButton.className = "delete-button";
+            deleteButton.innerText = "삭제";
+            deleteButton.addEventListener('click', function() {
+                deletePost(post.id);
+            });
+            postElement.appendChild(deleteButton);
+
             postContainer.appendChild(postElement);
         }
     }
-</script>
+
+    function goBack() {
+        window.history.back();
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>간단한 게시판</h2>
+    <input type="text" id="nickname" placeholder="닉네임을 입력하세요.">
+    <textarea id="post-content" placeholder="게시글 내용을 입력하세요."></textarea>
+    <br>
+    <button type="button" onclick="addPost()">게시글 작성</button>
+    <button type="button" class="back-button" onclick="goBack()">뒤로 가기</button>
+    <ul id="post-list"></ul>
+  </div>
+</body>
+</html>
