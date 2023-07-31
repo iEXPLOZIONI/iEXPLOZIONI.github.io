@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .comment { margin: 10px; padding: 10px; border: 1px solid black; }
+    .delete { float: right; cursor: pointer; color: red; }
+  </style>
+</head>
+<body>
 
+<h2>게시물 등록하기</h2>
+
+<textarea id="commentText" rows="4" cols="50"></textarea><br>
+<button onclick="addComment()">등록</button>
+<button onclick="goBack()">돌아가기</button>
+
+<div id="commentBoard"></div>
+
+<script>
+  function addComment() {
+    var commentText = document.getElementById('commentText').value;
+    var commentBoard = document.getElementById('commentBoard');
+
+    var commentDiv = document.createElement('div');
+    commentDiv.className = 'comment';
+
+    var deleteDiv = document.createElement('div');
+    deleteDiv.className = 'delete';
+    deleteDiv.onclick = function() { commentBoard.removeChild(commentDiv); };
+    deleteDiv.innerText = '삭제';
+
+    var textDiv = document.createElement('div');
+    textDiv.innerText = commentText;
+
+    commentDiv.appendChild(deleteDiv);
+    commentDiv.appendChild(textDiv);
+    commentBoard.appendChild(commentDiv);
+  }
+
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+</body>
+</html>
