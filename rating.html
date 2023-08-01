@@ -10,6 +10,7 @@
 </div>
 
 <button onclick="addPost()">게시물 등록</button>
+<button onclick="goBack()">뒤로가기</button>  <!-- Add this button -->
 
 <div id="posts"></div>
 
@@ -54,6 +55,10 @@ function addRating(index) {
     
     displayPosts();  // Update the posts
   }
+}
+
+function goBack() {  // Add this function
+  window.history.back();
 }
 </script>
 
