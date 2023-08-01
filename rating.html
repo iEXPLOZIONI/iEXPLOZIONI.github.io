@@ -3,6 +3,7 @@
 <body>
 
 <h1>회사 평점 조회</h1>
+<p style="font-size: 100%;">평점은 1~5의 숫자 범위까지 등록가능합니다.</p> <!-- Add this line -->
 
 <div>
   <label for="post">회사 등록:</label><br>
@@ -10,7 +11,7 @@
 </div>
 
 <button onclick="addPost()">회사 등록</button>
-<button onclick="goBack()">뒤로가기</button>  <!-- Add this button -->
+<button onclick="goBack()">뒤로가기</button>
 
 <div id="posts"></div>
 
@@ -34,7 +35,7 @@ function displayPosts() {
 
   for(let i = 0; i < posts.length; i++) {
     let postElement = document.createElement('div');
-    postElement.innerHTML = '<p>' + posts[i].post + ' (평점: ' + posts[i].avgRating.toFixed(2) + ')</p>' +
+    postElement.innerHTML = '<p>' + posts[i].post + ' (평점: ' + posts[i].avgRating.toFixed(2) + ')</p>' +  <!-- 평균 평점 출력 시 소수점 둘째 자리까지 표시 -->
     '<input type="number" min="1" max="5" id="rating' + i + '">' +
     '<button onclick="addRating(' + i + ')">평점 추가</button>';
     postsDiv.appendChild(postElement);
@@ -45,19 +46,22 @@ function addRating(index) {
   let rating = document.getElementById("rating" + index).value;
   
   if (rating) {
-    posts[index].ratings.push(parseFloat(rating));
-    
-    let total = 0;
-    for(let i = 0; i < posts[index].ratings.length; i++) {
-        total += posts[index].ratings[i];
-    }
-    posts[index].avgRating = total / posts[index].ratings.length;
-    
-    displayPosts();  // Update the posts
+    // Ensure the input is a number and within the range 1-5
+    if (!isNaN(rating) && rating >= 1 && rating <= 5) {
+      posts[index].ratings.push(parseFloat(rating));
+      
+      let total = 0;
+      for(let i = 0; i < posts[index].ratings.length; i++) {
+          total += posts[index].ratings[i];
+      }
+      posts[index].avgRating = total / posts[index].ratings.length;
+      
+      displayPosts();  // Update the posts
+    } 
   }
 }
 
-function goBack() {  // Add this function
+function goBack() {
   window.history.back();
 }
 </script>
