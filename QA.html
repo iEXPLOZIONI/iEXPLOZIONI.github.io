@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>간단한 게시판</title>
+  <title>Q&A</title>
   <style>
     .container {
       width: 600px;
@@ -117,10 +117,10 @@
 <body>
   <div class="container">
     <h2>간단한 게시판</h2>
-    <input type="text" id="nickname" placeholder="닉네임을 입력하세요.">
-    <textarea id="post-content" placeholder="게시글 내용을 입력하세요."></textarea>
+    <input type="text" id="nickname" placeholder="사용자의 이름을 입력해주세요.">
+    <textarea id="post-content" placeholder="내용을 작성하시오."></textarea>
     <br>
-    <button type="button" onclick="addPost()">게시글 작성</button>
+    <button type="button" onclick="addPost()">작성하기</button>
     <button type="button" class="back-button" onclick="goBack()">뒤로 가기</button>
     <ul id="post-list"></ul>
   </div>
