@@ -5,7 +5,7 @@
 <h1>회사 평점 조회</h1>
 
 <div>
-  <label for="post">게시물:</label><br>
+  <label for="post">회사 등록:</label><br>
   <textarea id="post" name="post" rows="4" cols="50"></textarea>
 </div>
 
@@ -34,7 +34,7 @@ function displayPosts() {
 
   for(let i = 0; i < posts.length; i++) {
     let postElement = document.createElement('div');
-    postElement.innerHTML = '<p>' + posts[i].post + ' (평균 평점: ' + posts[i].avgRating.toFixed(2) + ')</p>' +
+    postElement.innerHTML = '<p>' + posts[i].post + ' (평점: ' + posts[i].avgRating.toFixed(2) + ')</p>' +
     '<input type="number" min="1" max="5" id="rating' + i + '">' +
     '<button onclick="addRating(' + i + ')">평점 추가</button>';
     postsDiv.appendChild(postElement);
